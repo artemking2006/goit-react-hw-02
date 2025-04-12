@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Feedback = ({ reaction: {good, neutral, bad}, total, positive}) => {
+const Feedback = ({ reaction: { good, neutral, bad }, total, positive}) => {
     return (
         <>
           <p>Good: {good}</p>
