@@ -8,16 +8,16 @@ import { setLocal, getLocal } from '../LocalStorage/LocalStorage';
 const App = () => {
     const [reaction, setReaction] = useState(() => {
         const savedFeedback = getLocal('savedFeedback');
-
-        if (savedFeedback) {
-            return savedFeedback;
-        } else {
-             return {
+        const hasValidShape = savedFeedback &&
+        typeof savedFeedback.good === 'number' &&
+        typeof savedFeedback.neutral === 'number' &&
+        typeof savedFeedback.bad === 'number';
+ 
+        return hasValidShape ? savedFeedback : {
             good: 0,
             neutral: 0,
             bad: 0,
         };
-      }
     });
 
     const updateFeedback = (feedbackType) => {
